@@ -35,11 +35,11 @@ class FilterFunctionSuite extends FunSuite with TestBase with Matchers {
   }
 
   test("filter function with named variables") {
-    val function = filter('array, predicate, "myvar")
+    val function = filter('array, predicate, "myelm")
     val result = df.applyFunction(function)
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual expected
-    resultField shouldEqual "filter(array, lambdafunction(((myvar % 2) = 0), myvar))"
+    resultField shouldEqual "filter(array, lambdafunction(((myelm % 2) = 0), myelm))"
   }
 }

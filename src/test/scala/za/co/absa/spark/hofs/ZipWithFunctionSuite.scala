@@ -35,11 +35,11 @@ class ZipWithFunctionSuite extends FunSuite with TestBase with Matchers {
   }
 
   test("zip_with function with named variables") {
-    val function = zip_with('array1, 'array2, merge, "myvar1", "myvar2")
+    val function = zip_with('array1, 'array2, merge, "myelm1", "myelm2")
     val result = df.applyFunction(function)
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual expected
-    resultField shouldEqual "zip_with(array1, array2, lambdafunction((myvar1 + myvar2), myvar1, myvar2))"
+    resultField shouldEqual "zip_with(array1, array2, lambdafunction((myelm1 + myelm2), myelm1, myelm2))"
   }
 }

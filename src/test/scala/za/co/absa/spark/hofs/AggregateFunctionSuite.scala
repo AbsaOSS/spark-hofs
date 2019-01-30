@@ -37,12 +37,12 @@ class AggregateFunctionSuite extends FunSuite with TestBase with Matchers {
   }
 
   test("aggregate function with named variables") {
-    val function = aggregate('array, zeroElement, merge, "myzero", "myvar")
+    val function = aggregate('array, zeroElement, merge, "myacc", "myelm")
     val result = df.applyFunction(function)
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual 19
-    resultField shouldEqual "aggregate(array, 1, lambdafunction((myzero + myvar), myzero, myvar), lambdafunction(myzero, myzero))"
+    resultField shouldEqual "aggregate(array, 1, lambdafunction((myacc + myelm), myacc, myelm), lambdafunction(myacc, myacc))"
   }
 
   test("aggregate function with anonymous variables and finish function") {
@@ -52,11 +52,11 @@ class AggregateFunctionSuite extends FunSuite with TestBase with Matchers {
   }
 
   test("aggregate function with named variables and finish function") {
-    val function = aggregate('array, zeroElement, merge, finish, "myzero", "myvar")
+    val function = aggregate('array, zeroElement, merge, finish, "myacc", "myelm")
     val result = df.applyFunction(function)
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual 361
-    resultField shouldEqual "aggregate(array, 1, lambdafunction((myzero + myvar), myzero, myvar), lambdafunction((myzero * myzero), myzero))"
+    resultField shouldEqual "aggregate(array, 1, lambdafunction((myacc + myelm), myacc, myelm), lambdafunction((myacc * myacc), myacc))"
   }
 }

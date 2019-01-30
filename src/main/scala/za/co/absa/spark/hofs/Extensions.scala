@@ -19,9 +19,21 @@ package za.co.absa.spark.hofs
 import org.apache.spark.sql.Column
 import org.apache.spark.sql.catalyst.expressions.Expression
 
+/**
+  * The object is a container of extension methods used by the wrapper of high-order functions.
+  */
 object Extensions {
 
+  /**
+    * The class represents an extension wrapper for an [[org.apache.spark.sql.catalyst.expressions.Expression expression]].
+    * @param expression An expression to be extended with methods contained in this class.
+    */
   implicit class ExpressionExtension(expression: Expression) {
+
+    /**
+      * The method converts wrapped expression to a column.
+      * @return A column
+      */
     def toCol: Column = new Column(expression)
   }
 }

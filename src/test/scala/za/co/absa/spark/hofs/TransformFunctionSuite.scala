@@ -33,12 +33,12 @@ class TransformFunctionSuite extends FunSuite with TestBase with Matchers {
 
   test("transform function with named variables") {
     val df = Seq(Seq(1, 4, 5, 7)).toDF("array")
-    val function = transform('array, y => y + 1, "myvar")
+    val function = transform('array, y => y + 1, "myelm")
     val result = df.applyFunction(function)
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual Array(2, 5, 6, 8)
-    resultField shouldEqual "transform(array, lambdafunction((myvar + 1), myvar))"
+    resultField shouldEqual "transform(array, lambdafunction((myelm + 1), myelm))"
   }
 
   test("transform function with anonymous variables and an index") {
@@ -50,12 +50,12 @@ class TransformFunctionSuite extends FunSuite with TestBase with Matchers {
 
   test("transform function with named variables and an index") {
     val df = Seq(Seq(1, 4, 5, 7)).toDF("array")
-    val function = transform('array, (x, i) => x + i, "myvar", "myidx")
+    val function = transform('array, (x, i) => x + i, "myelm", "myidx")
     val result = df.applyFunction(function)
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual Array(1, 5, 7, 10)
-    resultField shouldEqual "transform(array, lambdafunction((myvar + myidx), myvar, myidx))"
+    resultField shouldEqual "transform(array, lambdafunction((myelm + myidx), myelm, myidx))"
   }
 
 }
