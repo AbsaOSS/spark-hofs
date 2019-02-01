@@ -135,8 +135,8 @@ package object hofs {
   /**
     * Applies the binary `merge` function to gradually reduce the `zero` element and all elements from the input
     * `array` into one element. The function is an equivalent of the foldLeft function from functional programming.
-    * The lambda variable for accumulator will be represented as `acc` and the lambda variable for element as `elm`
-    * in Spark execution plans.
+    * The lambda variable for the accumulator will be represented as `acc` and the lambda variable for the element
+    * as `elm` in Spark execution plans.
     * @param array A column of input arrays
     * @param zero A column of zero elements
     * @param merge A function that takes and and accumulator and a given element and returns another accumulator
@@ -174,8 +174,8 @@ package object hofs {
     * Applies the binary `merge` function to gradually reduce the `zero` element and all elements from the input
     * `array` into one element. The function is an equivalent of the foldLeft function from functional programming.
     * After obtaining a single element the function converts the element into a suitable form by passing the element
-    * into the `finish` function. The lambda variable for accumulator will be represented as `acc` and the lambda
-    * variable for element as `elm` in Spark execution plans.
+    * into the `finish` function. The lambda variable for the accumulator will be represented as `acc` and the lambda
+    * variable for the element as `elm` in Spark execution plans.
     * @param array A column of input arrays
     * @param zero A column of zero elements
     * @param merge A function that takes and and accumulator and a given element and returns another accumulator
