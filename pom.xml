@@ -27,7 +27,7 @@
 
 	<groupId>za.co.absa</groupId>
 	<artifactId>spark-hofs</artifactId>
-	<version>0.1.0-SNAPHOT</version>
+	<version>0.1.0</version>
 
 	<packaging>jar</packaging>
 
@@ -48,7 +48,7 @@
 		<connection>scm:git:git://github.com/AbsaOSS/spark-hofs.git</connection>
 		<developerConnection>scm:git:ssh://github.com:AbsaOSS/spark-hofs.git</developerConnection>
 		<url>https://github.com/AbsaOSS/spark-hofs/tree/master</url>
-		<tag>HEAD</tag>
+		<tag>v0.1.0</tag>
 	</scm>
 
 	<licenses>
