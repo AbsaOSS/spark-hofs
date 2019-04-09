@@ -72,7 +72,7 @@ package object hofs {
       array: Column,
       f: Column => Column,
       elementName: String): Column = {
-    val variable = UnresolvedAttribute(elementName)
+    val variable = UnresolvedNamedLambdaVariable(Seq(elementName))
     val lambda = createLambda(variable, f)
     ArrayTransform(array.expr, lambda).toCol
   }
@@ -101,8 +101,8 @@ package object hofs {
       f: (Column, Column) => Column,
       elementName: String,
       indexName: String): Column = {
-    val variable = UnresolvedAttribute(elementName)
-    val index = UnresolvedAttribute(indexName)
+    val variable = UnresolvedNamedLambdaVariable(Seq(elementName))
+    val index = UnresolvedNamedLambdaVariable(Seq(indexName))
     val lambda = createLambda(variable, index, f)
     ArrayTransform(array.expr, lambda).toCol
   }
@@ -127,7 +127,7 @@ package object hofs {
       array: Column,
       f: Column => Column,
       elementName: String): Column = {
-    val variable = UnresolvedAttribute(elementName)
+    val variable = UnresolvedNamedLambdaVariable(Seq(elementName))
     val lambda = createLambda(variable, f)
     ArrayFilter(array.expr, lambda).toCol
   }
@@ -211,8 +211,8 @@ package object hofs {
       finish: Column => Column,
       accumulatorName: String,
       elementName: String): Column = {
-    val zeroElement = UnresolvedAttribute(accumulatorName)
-    val variable = UnresolvedAttribute(elementName)
+    val zeroElement = UnresolvedNamedLambdaVariable(Seq(accumulatorName))
+    val variable = UnresolvedNamedLambdaVariable(Seq(elementName))
     ArrayAggregate(
       array.expr,
       zero.expr,
@@ -255,8 +255,8 @@ package object hofs {
       f: (Column, Column) => Column,
       leftElementName: String,
       rightElementName: String): Column = {
-    val leftVariable = UnresolvedAttribute(leftElementName)
-    val rightVariable = UnresolvedAttribute(rightElementName)
+    val leftVariable = UnresolvedNamedLambdaVariable(Seq(leftElementName))
+    val rightVariable = UnresolvedNamedLambdaVariable(Seq(rightElementName))
     val lambda = createLambda(leftVariable, rightVariable, f)
     ZipWith(left.expr, right.expr, lambda).toCol
   }
