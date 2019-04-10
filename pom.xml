@@ -46,7 +46,7 @@
 
 	<scm>
 		<connection>scm:git:git://github.com/AbsaOSS/spark-hofs.git</connection>
-		<developerConnection>scm:git:ssh://github.com:AbsaOSS/spark-hofs.git</developerConnection>
+		<developerConnection>scm:git:ssh://github.com/AbsaOSS/spark-hofs.git</developerConnection>
 		<url>https://github.com/AbsaOSS/spark-hofs/tree/master</url>
 		<tag>HEAD</tag>
 	</scm>
