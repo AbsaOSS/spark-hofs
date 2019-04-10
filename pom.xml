@@ -32,6 +32,9 @@
 	<packaging>jar</packaging>
 
 	<properties>
+		<!-- This is server id for configuring access credentials via settings.xml-->
+		<project.scm.id>spark-hofs-scm-server</project.scm.id>
+
 		<encoding>UTF-8</encoding>
 		<maven.scala.version>3.2.0</maven.scala.version>
 		<maven.sources.version>3.0.1</maven.sources.version>
