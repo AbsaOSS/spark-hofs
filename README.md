@@ -32,10 +32,11 @@ Reference the library (e.g. via Maven)
 
 Please, use the table below to determine what version of spark-hofs to use for Spark compatibility.
 
-|   Spark version    |  spark-hofs version   |
-|:------------------:|:---------------------:|
-|      2.4.0         |         0.1.0         |
-|      2.4.1         |         0.2.0         |
+|   Spark version       |  spark-hofs version   |
+|:---------------------:|:---------------------:|
+|   2.4.0               |         0.1.0         |
+|   2.4.1               |         0.2.0         |
+|   2.4.2 (Scala 2.11)  |         0.3.0         |
 
 Import Scala API of the high-order functions into your scope.
 ```scala
