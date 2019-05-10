@@ -37,6 +37,7 @@ Please, use the table below to determine what version of spark-hofs to use for S
 |   2.4.0               |         0.1.0         |
 |   2.4.1               |         0.2.0         |
 |   2.4.2 (Scala 2.11)  |         0.3.0         |
+|   2.4.3 (Scala 2.11)  |         0.3.1         |
 
 Import Scala API of the high-order functions into your scope.
 ```scala
