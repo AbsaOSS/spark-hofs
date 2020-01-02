@@ -24,7 +24,7 @@ using the functions.
 Reference the library
 
 ### Scala 2.11
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa.cobrix/spark-hofs_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa.cobrix/spark-hofs_2.11)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.11)
 
 ```
 groupId: za.co.absa.cobrix
@@ -33,7 +33,7 @@ version: 0.4.0
 ```
 
 ### Scala 2.12
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa.cobrix/spark-hofs_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa.cobrix/spark-hofs_2.12)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.12)
 
 ```
 groupId: za.co.absa.cobrix
