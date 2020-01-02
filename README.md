@@ -43,12 +43,12 @@ version: 0.4.0
 
 Please, use the table below to determine what version of spark-hofs to use for Spark compatibility.
 
-| Scala version |  Spark version  |  spark-hofs version   |
-|:-------------:|:---------------:|:---------------------:|
-|     2.11      |     2.4.0       |         0.1.0         |
-|     2.11      |     2.4.1       |         0.2.0         |
-|     2.11      |     2.4.2       |         0.3.x         |
-|  2.11, 2.12   |     2.4.3+      |         0.4.x+        |
+| spark-hofs version | Scala version |  Spark version  |
+|:------------------:|:-------------:|:---------------:|
+|       0.1.0        |     2.11      |     2.4.0       |
+|       0.2.0        |     2.11      |     2.4.1       |
+|       0.3.x        |     2.11      |     2.4.2       |
+|       0.4.x        |  2.11, 2.12   |     2.4.3+      |
 
 Import Scala API of the high-order functions into your scope.
 ```scala
