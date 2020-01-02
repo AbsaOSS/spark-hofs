@@ -31,7 +31,8 @@ lazy val hofs = (project in file("."))
   .settings(
     name := "spark-hofs",
     libraryDependencies ++= SparkHofsDependencies :+ getScalaDependency(scalaVersion.value),
-    releasePublishArtifactsAction := PgpKeys.publishSigned.value
+    releasePublishArtifactsAction := PgpKeys.publishSigned.value,
+    Test / fork := true
   )
 
 // release settings
