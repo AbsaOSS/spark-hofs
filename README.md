@@ -21,23 +21,34 @@ using the functions.
 
 ## Usage
 
-Reference the library (e.g. via Maven)
-```xml
-<dependency>
-    <groupId>za.co.absa</groupId>
-    <artifactId>spark-hofs</artifactId>
-    <version>${spark-hofs-version}</version>
-</dependency>
+Reference the library
+
+### Scala 2.11
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa.cobrix/spark-hofs_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa.cobrix/spark-hofs_2.11)
+
+```
+groupId: za.co.absa.cobrix
+artifactId: spark-hofs_2.11
+version: 0.4.0
+```
+
+### Scala 2.12
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa.cobrix/spark-hofs_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa.cobrix/spark-hofs_2.12)
+
+```
+groupId: za.co.absa.cobrix
+artifactId: spark-hofs_2.12
+version: 0.4.0
 ```
 
 Please, use the table below to determine what version of spark-hofs to use for Spark compatibility.
 
-|   Spark version       |  spark-hofs version   |
-|:---------------------:|:---------------------:|
-|   2.4.0               |         0.1.0         |
-|   2.4.1               |         0.2.0         |
-|   2.4.2 (Scala 2.11)  |         0.3.0         |
-|   2.4.3 (Scala 2.11)  |         0.3.1         |
+| Scala version |  Spark version  |  spark-hofs version   |
+|:-------------:|:---------------:|:---------------------:|
+|     2.11      |     2.4.0       |         0.1.0         |
+|     2.11      |     2.4.1       |         0.2.0         |
+|     2.11      |     2.4.2       |         0.3.x         |
+|  2.11, 2.12   |     2.4.3+      |         0.4.x+        |
 
 Import Scala API of the high-order functions into your scope.
 ```scala
