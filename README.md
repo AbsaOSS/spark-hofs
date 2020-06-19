@@ -13,7 +13,7 @@ Reference the library
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.11)
 
 ```
-groupId: za.co.absa.cobrix
+groupId: za.co.absa
 artifactId: spark-hofs_2.11
 version: 0.4.0
 ```
@@ -22,7 +22,7 @@ version: 0.4.0
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.12)
 
 ```
-groupId: za.co.absa.cobrix
+groupId: za.co.absa
 artifactId: spark-hofs_2.12
 version: 0.4.0
 ```
