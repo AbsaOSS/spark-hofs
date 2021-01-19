@@ -27,9 +27,16 @@ ThisBuild / crossScalaVersions := Seq(scala211, scala212)
 // Scala shouldn't be packaged so it is explicitly added as a provided dependency below
 ThisBuild / autoScalaLibrary := false
 
+lazy val printSparkVersion = taskKey[Unit]("Print Spark version spark-cobol is building against.")
+
 lazy val hofs = (project in file("."))
   .settings(
     name := "spark-hofs",
+    printSparkVersion := {
+      val log = streams.value.log
+      log.info(s"Building with Spark $sparkVersion")
+      sparkVersion
+    },
     libraryDependencies ++= SparkHofsDependencies :+ getScalaDependency(scalaVersion.value),
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
     Test / fork := true
