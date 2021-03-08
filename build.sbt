@@ -40,7 +40,7 @@ lazy val hofs = (project in file("."))
     libraryDependencies ++= SparkHofsDependencies :+ getScalaDependency(scalaVersion.value),
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
     Test / fork := true
-  )
+  ).enablePlugins(AutomateHeaderPlugin)
 
 // release settings
 releaseCrossBuild := true
