@@ -40,6 +40,10 @@ class ZipWithFunctionSuite extends FunSuite with TestBase with Matchers {
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual expected
-    resultField shouldEqual "zip_with(array1, array2, lambdafunction((myelm1 + myelm2), myelm1, myelm2))"
+    if (spark.version.startsWith("2") || spark.version.startsWith("3.1")) {
+      resultField shouldEqual "zip_with(array1, array2, lambdafunction((myelm1 + myelm2), myelm1, myelm2))"
+    } else {
+      resultField shouldEqual "zip_with(array1, array2, lambdafunction((namedlambdavariable() + namedlambdavariable()), namedlambdavariable(), namedlambdavariable()))"
+    }
   }
 }

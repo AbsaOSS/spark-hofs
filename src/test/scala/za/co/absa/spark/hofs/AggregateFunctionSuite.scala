@@ -19,8 +19,8 @@ package za.co.absa.spark.hofs
 import org.apache.spark.sql.Column
 import org.apache.spark.sql.functions._
 import org.scalatest.{FunSuite, Matchers}
-
 import DataFrameExtensions._
+import za.co.absa.spark.hofs
 
 class AggregateFunctionSuite extends FunSuite with TestBase with Matchers {
   import spark.implicits._
@@ -37,12 +37,16 @@ class AggregateFunctionSuite extends FunSuite with TestBase with Matchers {
   }
 
   test("aggregate function with named variables") {
-    val function = aggregate('array, zeroElement, merge, "myacc", "myelm")
+    val function = hofs.aggregate('array, zeroElement, merge, "myacc", "myelm")
     val result = df.applyFunction(function)
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual 19
-    resultField shouldEqual "aggregate(array, 1, lambdafunction((myacc + myelm), myacc, myelm), lambdafunction(myacc, myacc))"
+    if (spark.version.startsWith("2") || spark.version.startsWith("3.1")) {
+      resultField shouldEqual "aggregate(array, 1, lambdafunction((myacc + myelm), myacc, myelm), lambdafunction(myacc, myacc))"
+    } else {
+      resultField shouldEqual "aggregate(array, 1, lambdafunction((namedlambdavariable() + namedlambdavariable()), namedlambdavariable(), namedlambdavariable()), lambdafunction(namedlambdavariable(), namedlambdavariable()))"
+    }
   }
 
   test("aggregate function with anonymous variables and finish function") {
@@ -52,11 +56,15 @@ class AggregateFunctionSuite extends FunSuite with TestBase with Matchers {
   }
 
   test("aggregate function with named variables and finish function") {
-    val function = aggregate('array, zeroElement, merge, finish, "myacc", "myelm")
+    val function = hofs.aggregate('array, zeroElement, merge, finish, "myacc", "myelm")
     val result = df.applyFunction(function)
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual 361
-    resultField shouldEqual "aggregate(array, 1, lambdafunction((myacc + myelm), myacc, myelm), lambdafunction((myacc * myacc), myacc))"
+    if (spark.version.startsWith("2") || spark.version.startsWith("3.1")) {
+      resultField shouldEqual "aggregate(array, 1, lambdafunction((myacc + myelm), myacc, myelm), lambdafunction((myacc * myacc), myacc))"
+    } else {
+      resultField shouldEqual "aggregate(array, 1, lambdafunction((namedlambdavariable() + namedlambdavariable()), namedlambdavariable(), namedlambdavariable()), lambdafunction((namedlambdavariable() * namedlambdavariable()), namedlambdavariable()))"
+    }
   }
 }
