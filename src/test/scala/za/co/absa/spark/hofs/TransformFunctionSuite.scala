@@ -18,44 +18,52 @@ package za.co.absa.spark.hofs
 
 import org.apache.spark.sql.functions._
 import org.scalatest.{FunSuite, Matchers}
-
 import DataFrameExtensions._
+import za.co.absa.spark.hofs
 
 class TransformFunctionSuite extends FunSuite with TestBase with Matchers {
   import spark.implicits._
 
   test("transform function with anonymous variables") {
     val df = Seq(Seq(Seq(1, 9), Seq(8, 9))).toDF("array")
-    val result = df.applyFunction(transform('array, x => concat(array(lit(1)), transform(x, y => y + 1))))
+    val result = df.applyFunction(hofs.transform('array, x => concat(array(lit(1)), hofs.transform(x, y => y + 1))))
 
     result shouldEqual Array(Array(1, 2, 10), Array(1, 9, 10))
   }
 
   test("transform function with named variables") {
     val df = Seq(Seq(1, 4, 5, 7)).toDF("array")
-    val function = transform('array, y => y + 1, "myelm")
+    val function = hofs.transform('array, y => y + 1, "myelm")
     val result = df.applyFunction(function)
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual Array(2, 5, 6, 8)
-    resultField shouldEqual "transform(array, lambdafunction((myelm + 1), myelm))"
+    if (spark.version.startsWith("2") || spark.version.startsWith("3.1")) {
+      resultField shouldEqual "transform(array, lambdafunction((myelm + 1), myelm))"
+    } else {
+      resultField shouldEqual "transform(array, lambdafunction((namedlambdavariable() + 1), namedlambdavariable()))"
+    }
   }
 
   test("transform function with anonymous variables and an index") {
     val df = Seq(Seq(1, 4, 5, 7)).toDF("array")
-    val result = df.applyFunction(transform('array, (x, i) => x + i))
+    val result = df.applyFunction(hofs.transform('array, (x, i) => x + i))
 
     result shouldEqual Array(1, 5, 7, 10)
   }
 
   test("transform function with named variables and an index") {
     val df = Seq(Seq(1, 4, 5, 7)).toDF("array")
-    val function = transform('array, (x, i) => x + i, "myelm", "myidx")
+    val function = hofs.transform('array, (x, i) => x + i, "myelm", "myidx")
     val result = df.applyFunction(function)
     val resultField = df.select(function).schema.fields.head.name
 
     result shouldEqual Array(1, 5, 7, 10)
-    resultField shouldEqual "transform(array, lambdafunction((myelm + myidx), myelm, myidx))"
+    if (spark.version.startsWith("2") || spark.version.startsWith("3.1")) {
+      resultField shouldEqual "transform(array, lambdafunction((myelm + myidx), myelm, myidx))"
+    } else {
+      resultField shouldEqual "transform(array, lambdafunction((namedlambdavariable() + namedlambdavariable()), namedlambdavariable(), namedlambdavariable()))"
+    }
   }
 
 }
