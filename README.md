@@ -154,3 +154,12 @@ scala> df.withColumn("output", zip_with('input1, 'input2, (x, y) => x + y)).show
 ```
 The lambda variables indicating input elements to the merging function will be seen as `left` and `right` in
 Spark execution plans. The names can be changed by passing extra arguments to the **zip_with** function.
+
+## How to generate Code coverage report
+```sbt
+sbt jacoco
+```
+Code coverage will be generated on path:
+```
+{local-path}\spark-hofs\target\scala-2.XY\jacoco\report\html
+```
