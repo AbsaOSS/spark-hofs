@@ -49,7 +49,8 @@ addCommandAlias("releaseNow", ";set releaseVersionBump := sbtrelease.Version.Bum
 // JaCoCo code coverage
 Test / jacocoReportSettings := JacocoReportSettings(
   title = s"spark-hofs Jacoco Report - ${scalaVersion.value}",
-  formats = Seq(JacocoReportFormats.HTML, JacocoReportFormats.XML))
+  formats = Seq(JacocoReportFormats.HTML, JacocoReportFormats.XML)
+)
 
 // exclude example
 Test / jacocoExcludes := Seq(
