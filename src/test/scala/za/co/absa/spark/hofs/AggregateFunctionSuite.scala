@@ -18,11 +18,12 @@ package za.co.absa.spark.hofs
 
 import org.apache.spark.sql.Column
 import org.apache.spark.sql.functions._
-import org.scalatest.{FunSuite, Matchers}
 import DataFrameExtensions._
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 import za.co.absa.spark.hofs
 
-class AggregateFunctionSuite extends FunSuite with TestBase with Matchers {
+class AggregateFunctionSuite extends AnyFunSuite with TestBase with Matchers {
   import spark.implicits._
 
   private val df = Seq(Seq(2, 4, 5, 7)).toDF("array")

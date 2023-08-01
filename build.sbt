@@ -17,12 +17,13 @@
 import Dependencies._
 
 val scala211 = "2.11.12"
-val scala212 = "2.12.10"
+val scala212 = "2.12.18"
+val scala213 = "2.13.11"
 
 ThisBuild / organization := "za.co.absa"
 
-ThisBuild / scalaVersion := scala211
-ThisBuild / crossScalaVersions := Seq(scala211, scala212)
+ThisBuild / scalaVersion := scala212
+ThisBuild / crossScalaVersions := Seq(scala211, scala212, scala213)
 
 // Scala shouldn't be packaged so it is explicitly added as a provided dependency below
 ThisBuild / autoScalaLibrary := false
@@ -34,10 +35,11 @@ lazy val hofs = (project in file("."))
     name := "spark-hofs",
     printSparkVersion := {
       val log = streams.value.log
-      log.info(s"Building with Spark $sparkVersion")
-      sparkVersion
+      val effectiveSparkVersion = sparkVersion(scalaVersion.value)
+      log.info(s"Building with Spark $effectiveSparkVersion")
+      effectiveSparkVersion
     },
-    libraryDependencies ++= SparkHofsDependencies :+ getScalaDependency(scalaVersion.value),
+    libraryDependencies ++= SparkHofsDependencies(scalaVersion.value) :+ getScalaDependency(scalaVersion.value),
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
     Test / fork := true
   ).enablePlugins(AutomateHeaderPlugin)

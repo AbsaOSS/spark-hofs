@@ -17,21 +17,36 @@
 import sbt._
 
 object Dependencies {
+  val defaultSparkVersionForScala211 = "2.4.8"
+  val defaultSparkVersionForScala212 = "3.3.2"
+  val defaultSparkVersionForScala213 = "3.4.1"
 
-  def sparkVersion: String = sys.props.getOrElse("SPARK_VERSION", "2.4.7")
-
-  private val scalatestVersion = "3.0.3"
+  private val scalatestVersion = "3.2.14"
 
   def getScalaDependency(scalaVersion: String): ModuleID = "org.scala-lang" % "scala-library" % scalaVersion % Provided
 
-  val SparkHofsDependencies: Seq[ModuleID] = Seq(
+  def SparkHofsDependencies(scalaVersion: String): Seq[ModuleID] = Seq(
     // provided
-    "org.apache.spark" %% "spark-core"       % sparkVersion % Provided,
-    "org.apache.spark" %% "spark-sql"        % sparkVersion % Provided,
-    "org.apache.spark" %% "spark-catalyst"   % sparkVersion % Provided,
+    "org.apache.spark" %% "spark-core"       % sparkVersion(scalaVersion) % Provided,
+    "org.apache.spark" %% "spark-sql"        % sparkVersion(scalaVersion) % Provided,
+    "org.apache.spark" %% "spark-catalyst"   % sparkVersion(scalaVersion) % Provided,
 
     // test
     "org.scalatest" %% "scalatest" % scalatestVersion % Test
   )
+
+  def sparkVersion(scalaVersion: String): String = sys.props.getOrElse("SPARK_VERSION", sparkFallbackVersion(scalaVersion))
+
+  def sparkFallbackVersion(scalaVersion: String): String = {
+    if (scalaVersion.startsWith("2.11.")) {
+      defaultSparkVersionForScala211
+    } else if (scalaVersion.startsWith("2.12.")) {
+      defaultSparkVersionForScala212
+    } else if (scalaVersion.startsWith("2.13.")) {
+      defaultSparkVersionForScala213
+    } else {
+      throw new IllegalArgumentException(s"Scala $scalaVersion not supported.")
+    }
+  }
 
 }

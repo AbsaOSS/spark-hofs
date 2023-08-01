@@ -17,11 +17,11 @@
 package za.co.absa.spark.hofs
 
 import org.apache.spark.sql.Column
-import org.scalatest.{FunSuite, Matchers}
-
 import DataFrameExtensions._
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
-class ZipWithFunctionSuite extends FunSuite with TestBase with Matchers {
+class ZipWithFunctionSuite extends AnyFunSuite with TestBase with Matchers {
   import spark.implicits._
 
   private val df = Seq((Seq(1, 4, 5, 7), Seq(2, 6, 5, 8))).toDF("array1", "array2")
