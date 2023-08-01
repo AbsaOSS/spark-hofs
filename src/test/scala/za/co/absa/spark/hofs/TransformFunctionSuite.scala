@@ -17,11 +17,12 @@
 package za.co.absa.spark.hofs
 
 import org.apache.spark.sql.functions._
-import org.scalatest.{FunSuite, Matchers}
 import DataFrameExtensions._
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 import za.co.absa.spark.hofs
 
-class TransformFunctionSuite extends FunSuite with TestBase with Matchers {
+class TransformFunctionSuite extends AnyFunSuite with TestBase with Matchers {
   import spark.implicits._
 
   test("transform function with anonymous variables") {

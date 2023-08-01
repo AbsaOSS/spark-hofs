@@ -17,11 +17,11 @@
 package za.co.absa.spark.hofs
 
 import org.apache.spark.sql.Column
-import org.scalatest.{FunSuite, Matchers}
-
 import DataFrameExtensions._
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
-class FilterFunctionSuite extends FunSuite with TestBase with Matchers {
+class FilterFunctionSuite extends AnyFunSuite with TestBase with Matchers {
   import spark.implicits._
 
   private val predicate = (x: Column) => x % 2 === 0
