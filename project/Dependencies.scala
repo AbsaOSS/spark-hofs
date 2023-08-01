@@ -25,7 +25,7 @@ object Dependencies {
 
   def getScalaDependency(scalaVersion: String): ModuleID = "org.scala-lang" % "scala-library" % scalaVersion % Provided
 
-  def SparkHofsDependencies(scalaVersion: String): Seq[ModuleID] = Seq(
+  def getSparkHofsDependencies(scalaVersion: String): Seq[ModuleID] = Seq(
     // provided
     "org.apache.spark" %% "spark-core"       % sparkVersion(scalaVersion) % Provided,
     "org.apache.spark" %% "spark-sql"        % sparkVersion(scalaVersion) % Provided,

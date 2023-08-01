@@ -39,7 +39,7 @@ lazy val hofs = (project in file("."))
       log.info(s"Building with Spark $effectiveSparkVersion")
       effectiveSparkVersion
     },
-    libraryDependencies ++= SparkHofsDependencies(scalaVersion.value) :+ getScalaDependency(scalaVersion.value),
+    libraryDependencies ++= getSparkHofsDependencies(scalaVersion.value) :+ getScalaDependency(scalaVersion.value),
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
     Test / fork := true
   ).enablePlugins(AutomateHeaderPlugin)
