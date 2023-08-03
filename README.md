@@ -6,7 +6,7 @@ This library makes the high-order functions accessible also for Dataframe/Datase
 using the functions. 
 
 > **Warning**
-> Starting from Spark 3 the high-order functions are available in the Scala API natively. The library is still compiled
+> Starting from Spark 3.2.1 the high-order functions are available in the Scala API natively. The library is still compiled
 for Scala 2.12 and Scala 2.13 and compatible with Spark 3, but it is for backwards compatibility only and we recommend
 migrating from `spark-hofs` to the native Spark API.
 
@@ -42,13 +42,13 @@ Reference the library
 
 Please, use the table below to determine what version of spark-hofs to use for Spark compatibility.
 
-| spark-hofs version | Scala version | Spark version |
-|:------------------:|:-------------:|:-------------:|
-|       0.1.0        |     2.11      |     2.4.0     |
-|       0.2.0        |     2.11      |     2.4.1     |
-|       0.3.x        |     2.11      |     2.4.2     |
-|       0.4.x        |  2.11, 2.12   |     2.4.x     |
-|       0.5.x        |  2.12, 2.13   |     3.x+      |
+| spark-hofs version |  Scala version   | Spark version |
+|:------------------:|:----------------:|:-------------:|
+|       0.1.0        |       2.11       |     2.4.0     |
+|       0.2.0        |       2.11       |     2.4.1     |
+|       0.3.x        |       2.11       |     2.4.2     |
+|       0.4.x        |    2.11, 2.12    |     2.4.3+    |
+|       0.5.x        | 2.11, 2.12, 2.13 |     2.4.3+    |
 
 Import Scala API of the high-order functions into your scope.
 ```scala
