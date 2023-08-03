@@ -5,36 +5,50 @@ only via textual representation of Spark SQL.
 This library makes the high-order functions accessible also for Dataframe/Dataset Scala API to get type safety when
 using the functions. 
 
+> **Warning**
+> Starting from Spark 3 the high-order functions are available in the Scala API natively. The library is still compiled
+for Scala 2.12 and Scala 2.13 and compatible with Spark 3, but it is for backwards compatibility only and we recommend
+migrating from `spark-hofs` to the native Spark API.
+
 ## Usage
 
 Reference the library
 
-### Scala 2.11
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.11)
-
-```
-groupId: za.co.absa
-artifactId: spark-hofs_2.11
-version: 0.4.0
-```
-
-### Scala 2.12
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.12)
-
-```
-groupId: za.co.absa
-artifactId: spark-hofs_2.12
-version: 0.4.0
-```
+<table>
+<tr><th>Scala 2.11</th><th>Scala 2.12</th><th>Scala 2.13</th></tr>
+<tr>
+<td align="center">
+<a href = "https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.11"><img src = "https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.11/badge.svg" alt="Maven Central"></a><br>
+</td>
+<td align="center">
+<a href = "https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.12"><img src = "https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.12/badge.svg" alt="Maven Central"></a><br>
+</td>
+<td align="center">
+<a href = "https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.13"><img src = "https://maven-badges.herokuapp.com/maven-central/za.co.absa/spark-hofs_2.13/badge.svg" alt="Maven Central"></a><br>
+</td>
+</tr>
+<tr>
+<td>
+<pre>groupId: za.co.absa<br>artifactId: spark-hofs_2.11<br>version: 0.5.0</pre>
+</td>
+<td>
+<pre>groupId: za.co.absa<br>artifactId: spark-hofs_2.12<br>version: 0.5.0</pre>
+</td>
+<td>
+<pre>groupId: za.co.absa<br>artifactId: spark-hofs_2.13<br>version: 0.5.0</pre>
+</td>
+</tr>
+</table>
 
 Please, use the table below to determine what version of spark-hofs to use for Spark compatibility.
 
-| spark-hofs version | Scala version |  Spark version  |
-|:------------------:|:-------------:|:---------------:|
-|       0.1.0        |     2.11      |     2.4.0       |
-|       0.2.0        |     2.11      |     2.4.1       |
-|       0.3.x        |     2.11      |     2.4.2       |
-|       0.4.x        |  2.11, 2.12   |     2.4.3+      |
+| spark-hofs version | Scala version | Spark version |
+|:------------------:|:-------------:|:-------------:|
+|       0.1.0        |     2.11      |     2.4.0     |
+|       0.2.0        |     2.11      |     2.4.1     |
+|       0.3.x        |     2.11      |     2.4.2     |
+|       0.4.x        |  2.11, 2.12   |     2.4.x     |
+|       0.5.x        |  2.12, 2.13   |     3.x+      |
 
 Import Scala API of the high-order functions into your scope.
 ```scala
